@@ -6,87 +6,110 @@
     <title>Tomfoolery Beats</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Spotify-specific Hex Codes */
+        /* Custom Spotify Green and Deep Black */
         :root {
-            --spotify-green: #1DB954;
-            --spotify-black: #121212;
-            --spotify-card: #181818;
-            --spotify-hover: #282828;
+            --spot-green: #1DB954;
+            --spot-black: #121212;
+            --spot-gray: #181818;
         }
 
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--spotify-black); }
-        ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--spotify-green); }
+        ::-webkit-scrollbar-track { background: var(--spot-black); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--spot-green); }
 
-        .btn-spotify {
-            background-color: var(--spotify-green);
-            transition: transform 0.2s ease, background-color 0.2s ease;
+        .audio-custom {
+            filter: invert(100%) hue-rotate(90deg) brightness(1.5);
+            opacity: 0.6;
         }
-        .btn-spotify:hover {
-            transform: scale(1.04);
-            background-color: #1ed760;
-        }
-        
-        /* Smooth fade for cards */
-        .beat-card {
-            background-color: var(--spotify-card);
-            transition: background-color 0.3s ease;
-        }
-        .beat-card:hover {
-            background-color: var(--spotify-hover);
-        }
+        .audio-custom:hover { opacity: 1; }
     </style>
 </head>
-<body class="bg-[#121212] text-white font-sans antialiased selection:bg-[#1DB954]/30">
+<body class="bg-[#121212] text-white font-sans antialiased">
 
-    <header class="pt-20 pb-12 px-6 max-w-7xl mx-auto">
-        <h1 class="text-7xl font-black tracking-tighter mb-4">Beats.</h1>
-        <p class="text-gray-400 text-lg font-medium">Stream previews and license high-quality production.</p>
+    <header class="py-16 px-6 text-center border-b border-white/10 bg-[#181818]">
+        <h1 class="text-5xl font-black tracking-tighter text-white mb-2">THE VAULT</h1>
+        <p class="text-gray-400 text-lg max-w-md mx-auto">Professional production. Future sound.</p>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 pb-24">
-        <div id="beat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <div id="beat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             </div>
     </main>
 
-    <footer class="py-12 text-center border-t border-white/10">
-        <p class="text-gray-500 text-xs tracking-widest uppercase font-bold">&copy; 2026 BeatVault x Spotify Style</p>
+    <footer class="py-10 text-center text-gray-600 text-sm border-t border-white/10">
+        &copy; 2026 Tomfoolery Beats. All Rights Reserved.
     </footer>
 
     <script>
-        // DATA SECTION: Update your beats here
+        // DATA SECTION: I've set up 3 examples. 
+        // To get 15+, just copy a { ... } block and paste it below the others.
         const myBeats = [
             {
-                title: "Example Beat",
-                genre: "Example Genre",
-                description: "Example description of the beat.",
-                previewUrl: "I GOT TWO WORDS FOR YA.mp3",
-                buyUrl: "#",
-                price: "$35"
+                title: "Example Beat 1",
+                genre: "Type / Style",
+                description: "Example description for beat 1 goes here.",
+                previewUrl: "preview1.mp3",
+                buyUrl: "https://stripe-link-1.com",
+                price: "£29.99"
             },
             {
                 title: "Example Beat 2",
-                genre: "Example Genre",
-                description: "Example description of the beat.",
-                previewUrl: "I GOT TWO WORDS FOR YA.mp3",
-                buyUrl: "#",
-                price: "$35"
+                genre: "Type / Style",
+                description: "Example description for beat 2 goes here.",
+                previewUrl: "preview2.mp3",
+                buyUrl: "https://stripe-link-2.com",
+                price: "£29.99"
             },
-            // Add your 15+ beats below following this format:
             {
                 title: "Example Beat 3",
-                genre: "Example Genre",
-                description: "Example description of the beat.",
-                previewUrl: "I GOT TWO WORDS FOR YA.mp3",
-                buyUrl: "#",
-                price: "$25"
+                genre: "Type / Style",
+                description: "Example description for beat 3 goes here.",
+                previewUrl: "preview3.mp3",
+                buyUrl: "https://stripe-link-3.com",
+                price: "£29.99"
             }
         ];
 
+        // RENDER LOGIC
         const grid = document.getElementById('beat-grid');
 
         myBeats.forEach(beat => {
             const card = `
-                <div class="beat-card p-5 rounded-lg shadow-2xl group flex flex-col">
-                    <div class="w-full aspect-square bg-gradient-to-br from-gray-700 to-gray-900 rounded-md mb-4 shadow-lg flex
+                <div class="group bg-[#181818] border border-white/5 p-6 rounded-2xl shadow-xl transition-all duration-300 hover:bg-[#282828] hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h2 class="text-xl font-bold text-white group-hover:text-[#1DB954] transition-colors">${beat.title}</h2>
+                            <span class="text-[10px] font-bold bg-[#1DB954]/10 text-[#1DB954] px-2 py-1 rounded-md uppercase tracking-widest">${beat.genre}</span>
+                        </div>
+                        <span class="text-lg font-mono font-bold text-gray-300">${beat.price}</span>
+                    </div>
+                    
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">${beat.description}</p>
+                    
+                    <div class="space-y-4">
+                        <audio controls class="audio-custom w-full h-8 transition-all">
+                            <source src="${beat.previewUrl}" type="audio/mpeg">
+                        </audio>
+
+                        <a href="${beat.buyUrl}" target="_blank" class="block w-full text-center bg-[#1DB954] hover:bg-[#1ed760] text-black font-black py-3 rounded-full transition-all transform hover:scale-105 uppercase text-xs tracking-wider">
+                            Purchase License
+                        </a>
+                    </div>
+                </div>
+            `;
+            grid.innerHTML += card;
+        });
+
+        // Anti-Cacophony: Stops one beat when another starts
+        document.addEventListener('play', function(e){
+            var audios = document.getElementsByTagName('audio');
+            for(var i = 0, len = audios.length; i < len;i++){
+                if(audios[i] != e.target){
+                    audios[i].pause();
+                }
+            }
+        }, true);
+    </script>
+</body>
+</html>
