@@ -17,7 +17,6 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--spot-green); }
 
-        /* This styles the audio player to look dark/green */
         .audio-custom {
             filter: invert(100%) hue-rotate(90deg) brightness(1.5);
             opacity: 0.6;
@@ -32,9 +31,20 @@
         <p class="text-gray-400 text-lg max-w-md mx-auto">Professional production. Future sound.</p>
     </header>
 
+    <section class="max-w-3xl mx-auto mt-12 px-6">
+        <div class="bg-[#181818] border border-white/10 p-8 rounded-2xl shadow-2xl">
+            <h2 class="text-[#1DB954] font-bold uppercase tracking-widest text-xs mb-3">Producer Note</h2>
+            <p class="text-gray-200 leading-relaxed">
+                Welcome to my personal beat store! All tracks are composed, mixed and mastered by me. 
+                Browse the previews below, find your vibe, and hit the purchase button 
+                for instant untagged delivery via Stripe. Let's make something legendary.
+            </p>
+        </div>
+    </section>
+
     <main class="max-w-7xl mx-auto px-6 py-12">
         <div id="beat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        </div>
+            </div>
     </main>
 
     <footer class="py-10 text-center text-gray-600 text-sm border-t border-white/10">
@@ -42,36 +52,25 @@
     </footer>
 
     <script>
-        // CLEAN DATA SECTION
-        // Copy a block from { to }, and paste it to add more.
+        // DATA SECTION: 15 Example Beats
         const myBeats = [
-            {
-                title: "Example Beat 1",
-                genre: "Trap",
-                description: "Example description for beat 1 goes here.",
-                previewUrl: "preview1.mp3",
-                buyUrl: "#",
-                price: "£29.99"
-            },
-            {
-                title: "Example Beat 2",
-                genre: "Dark Drill",
-                description: "Example description for beat 2 goes here.",
-                previewUrl: "preview2.mp3",
-                buyUrl: "#",
-                price: "£29.99"
-            },
-            {
-                title: "Example Beat 3",
-                genre: "Lofi Hip Hop",
-                description: "Example description for beat 3 goes here.",
-                previewUrl: "preview3.mp3",
-                buyUrl: "#",
-                price: "£29.99"
-            }
+            { title: "Example Beat 1", genre: "Trap", description: "Example description...", previewUrl: "preview1.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 2", genre: "Drill", description: "Example description...", previewUrl: "preview2.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 3", genre: "Lofi", description: "Example description...", previewUrl: "preview3.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 4", genre: "Boom Bap", description: "Example description...", previewUrl: "preview4.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 5", genre: "R&B", description: "Example description...", previewUrl: "preview5.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 6", genre: "Trap", description: "Example description...", previewUrl: "preview6.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 7", genre: "Drill", description: "Example description...", previewUrl: "preview7.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 8", genre: "Lofi", description: "Example description...", previewUrl: "preview8.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 9", genre: "Boom Bap", description: "Example description...", previewUrl: "preview9.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 10", genre: "R&B", description: "Example description...", previewUrl: "preview10.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 11", genre: "Trap", description: "Example description...", previewUrl: "preview11.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 12", genre: "Drill", description: "Example description...", previewUrl: "preview12.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 13", genre: "Lofi", description: "Example description...", previewUrl: "preview13.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 14", genre: "Boom Bap", description: "Example description...", previewUrl: "preview14.mp3", buyUrl: "#", price: "£29.99" },
+            { title: "Example Beat 15", genre: "R&B", description: "Example description...", previewUrl: "preview15.mp3", buyUrl: "#", price: "£29.99" }
         ];
 
-        // RENDER LOGIC: This creates the HTML for each beat
         const grid = document.getElementById('beat-grid');
 
         myBeats.forEach(beat => {
@@ -101,7 +100,6 @@
             grid.innerHTML += card;
         });
 
-        // Anti-Cacophony: Stops one beat when another starts
         document.addEventListener('play', function(e){
             var audios = document.getElementsByTagName('audio');
             for(var i = 0, len = audios.length; i < len;i++){
