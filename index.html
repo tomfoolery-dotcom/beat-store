@@ -6,7 +6,6 @@
     <title>Tomfoolery Beats</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom Spotify Green and Deep Black */
         :root {
             --spot-green: #1DB954;
             --spot-black: #121212;
@@ -18,6 +17,7 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--spot-green); }
 
+        /* This styles the audio player to look dark/green */
         .audio-custom {
             filter: invert(100%) hue-rotate(90deg) brightness(1.5);
             opacity: 0.6;
@@ -28,13 +28,13 @@
 <body class="bg-[#121212] text-white font-sans antialiased">
 
     <header class="py-16 px-6 text-center border-b border-white/10 bg-[#181818]">
-        <h1 class="text-5xl font-black tracking-tighter text-white mb-2">THE VAULT</h1>
+        <h1 class="text-5xl font-black tracking-tighter text-white mb-2 uppercase">The Vault</h1>
         <p class="text-gray-400 text-lg max-w-md mx-auto">Professional production. Future sound.</p>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-12">
         <div id="beat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            </div>
+        </div>
     </main>
 
     <footer class="py-10 text-center text-gray-600 text-sm border-t border-white/10">
@@ -42,36 +42,36 @@
     </footer>
 
     <script>
-        // DATA SECTION: I've set up 3 examples. 
-        // To get 15+, just copy a { ... } block and paste it below the others.
+        // CLEAN DATA SECTION
+        // Copy a block from { to }, and paste it to add more.
         const myBeats = [
             {
                 title: "Example Beat 1",
-                genre: "Type / Style",
+                genre: "Trap",
                 description: "Example description for beat 1 goes here.",
                 previewUrl: "preview1.mp3",
-                buyUrl: "https://stripe-link-1.com",
+                buyUrl: "#",
                 price: "£29.99"
             },
             {
                 title: "Example Beat 2",
-                genre: "Type / Style",
+                genre: "Dark Drill",
                 description: "Example description for beat 2 goes here.",
                 previewUrl: "preview2.mp3",
-                buyUrl: "https://stripe-link-2.com",
+                buyUrl: "#",
                 price: "£29.99"
             },
             {
                 title: "Example Beat 3",
-                genre: "Type / Style",
+                genre: "Lofi Hip Hop",
                 description: "Example description for beat 3 goes here.",
                 previewUrl: "preview3.mp3",
-                buyUrl: "https://stripe-link-3.com",
+                buyUrl: "#",
                 price: "£29.99"
             }
         ];
 
-        // RENDER LOGIC
+        // RENDER LOGIC: This creates the HTML for each beat
         const grid = document.getElementById('beat-grid');
 
         myBeats.forEach(beat => {
@@ -110,8 +110,6 @@
                 }
             }
         }, true);
-
-        
     </script>
 </body>
 </html>
