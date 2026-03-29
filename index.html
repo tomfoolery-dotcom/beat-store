@@ -3,38 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Tomfoolery Beat Store</title>
+    <title>BeatVault | Premium Production</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Modern aesthetic scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+        
+        /* Subtle glow animation for the buy button */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0px rgba(59, 130, 246, 0); }
+            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+        }
+        .buy-glow { animation: pulse-glow 3s infinite; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-[#0b0f1a] text-slate-200 font-sans antialiased selection:bg-blue-500/30">
 
-    <header class="py-10 text-center">
-        <h1 class="text-4xl font-bold tracking-tight">Tomfoolery Beats</h1>
-        <p class="text-gray-500 mt-2">Premium UK / US Beats | Instant Delivery</p>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-600/10 blur-[120px] -z-10"></div>
+
+    <header class="py-20 px-6 text-center">
+        <h1 class="text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500 mb-4">
+            BEATVAULT
+        </h1>
+        <p class="text-slate-400 text-lg max-w-md mx-auto mb-8 font-light italic">
+            "Your sound, perfected."
+        </p>
+        
+        <div class="flex justify-center gap-6 text-[10px] uppercase tracking-[0.2em] text-blue-400 font-bold">
+            <span>Instant Download</span>
+            <span class="text-slate-700">•</span>
+            <span>Untagged WAVs</span>
+            <span class="text-slate-700">•</span>
+            <span>100% Royalty Free</span>
+        </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 pb-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
-                <h2 class="text-xl font-semibold mb-1">Example Beat</h2>
-                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-3">UK Rap / Chill</span>
-                
-                <p class="text-gray-600 text-sm mb-4">This is where a description of the beat's style will be.</p>
-                
-                <audio controls class="w-full mb-6 h-8">
-                    <source src="I GOT TWO WORDS FOR YA.mp3" type="audio/mpeg">
-                </audio>
-
-                <div class="mt-auto">
-                    <a href="your-stripe-checkout-link" class="block text-center bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition">
-                        Buy License - £35.99
-                    </a>
-                </div>
-            </div>
-
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <div id="beat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             </div>
     </main>
 
-</body>
-</html>
+    <footer class="py-20 text-center border-t border-slate-900 mt-20">
+        <p class="text-slate-500 text-sm tracking-widest uppercase">&copy; 2026 BeatVault Productions</p>
+    </footer>
+
+    <script>
+        // DATA: Just add your 15+ objects here
+        const myBeats = [
+            {
+                title: "Midnight Tokyo",
+                genre: "Lofi / Chill",
+                description: "Nostalgic piano melodies and dusty textures.",
+                previewUrl: "tokyo.mp3",
+                buyUrl: "#",
+                price: "$29"
+            },
+            {
+                title: "Vortex",
+                genre: "Trap",
+                description: "Dark, aggressive 808s for a high-energy flow.",
+                previewUrl: "vortex.mp3",
+                buyUrl: "#",
+                price: "$35"
+            },
+            // Add as many as you want below...
+        ];
+
+        const grid = document.getElementById('beat-grid');
+
+        // Render function
+        myBeats.forEach((beat, index) => {
+            const card = `
+                <div class="group relative bg-slate-900/40 backdrop-blur-md border border-slate-800 p-8 rounded-3xl transition-all duration-500 hover:border-blue-500/50 hover:bg-slate-900/60">
+                    
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full blur-[4px]"></div>
+                    </div>
+
+                    <div class="flex justify-between
